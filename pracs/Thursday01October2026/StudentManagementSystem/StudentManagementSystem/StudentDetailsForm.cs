@@ -1,0 +1,142 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace StudentManagementSystem;
+
+public class StudentDetailsForm : Form
+{
+    private readonly Form dashboardForm;
+    private readonly TextBox txtStudentName = new();
+    private readonly TextBox txtStudentNumber = new();
+    private readonly TextBox txtCourse = new();
+    private readonly NumericUpDown nudAge = new();
+    private readonly Button btnSave = new();
+    private readonly Button btnBack = new();
+
+    public StudentDetailsForm(Form dashboardForm)
+    {
+        this.dashboardForm = dashboardForm;
+
+        AutoScaleMode = AutoScaleMode.Font;
+        Text = "Student Details";
+        StartPosition = FormStartPosition.CenterScreen;
+        ClientSize = new Size(640, 500);
+        MinimumSize = new Size(580, 420);
+        BackColor = Theme.Background;
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
+
+        var title = new Label
+        {
+            Text = "Student Details",
+            Font = Theme.TitleFont,
+            ForeColor = Theme.PrimaryDark,
+            AutoSize = true
+        };
+
+        AddField("Student Name", txtStudentName, 110);
+        AddField("Student Number", txtStudentNumber, 170);
+        AddField("Course", txtCourse, 230);
+
+        var lblAge = MakeLabel("Age", 120, 295);
+        nudAge.Size = new Size(300, 30);
+        nudAge.Location = new Point((ClientSize.Width - nudAge.Width) / 2, 290);
+        nudAge.Minimum = 1;
+        nudAge.Maximum = 120;
+        nudAge.Value = 18;
+        nudAge.Name = "nudAge";
+
+        ConfigureButton(btnSave, "Save", 145, 360, Theme.Accent);
+        ConfigureButton(btnBack, "Back", 335, 360, Theme.Primary);
+
+        // position two buttons centered with a small gap
+        int buttonWidth = 170;
+        int gap = 20;
+        int totalWidth = buttonWidth * 2 + gap;
+        int startX = (ClientSize.Width - totalWidth) / 2;
+        btnSave.Size = new Size(buttonWidth, btnSave.Height);
+        btnBack.Size = new Size(buttonWidth, btnBack.Height);
+        btnSave.Location = new Point(startX, 360);
+        btnBack.Location = new Point(startX + buttonWidth + gap, 360);
+
+        btnSave.Click += BtnSave_Click;
+        btnBack.Click += (_, _) => ReturnToDashboard();
+
+        btnSave.Anchor = AnchorStyles.Top;
+        btnBack.Anchor = AnchorStyles.Top;
+
+        title.Location = new Point((ClientSize.Width - title.PreferredSize.Width) / 2, 35);
+
+        Controls.AddRange(new Control[]
+        {
+            title, lblAge, nudAge, btnSave, btnBack
+        });
+    }
+
+    private void AddField(string labelText, TextBox box, int y)
+    {
+        var label = MakeLabel(labelText, 120, y + 5);
+        box.Location = new Point(250, y);
+        box.Size = new Size(270, 30);
+        box.Font = Theme.NormalFont;
+
+        Controls.Add(label);
+        Controls.Add(box);
+    }
+
+    private static Label MakeLabel(string text, int x, int y) => new()
+    {
+        Text = text,
+        Location = new Point(x, y),
+        AutoSize = true,
+        Font = Theme.NormalFont,
+        ForeColor = Theme.Text
+    };
+
+    private static void ConfigureButton(Button button, string text, int x, int y, Color color)
+    {
+        button.Text = text;
+        button.Location = new Point(x, y);
+        button.Size = new Size(170, 45);
+        button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+        button.BackColor = color;
+        button.ForeColor = Color.White;
+        button.FlatStyle = FlatStyle.Flat;
+    }
+
+    private void BtnSave_Click(object? sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(txtStudentName.Text) ||
+            string.IsNullOrWhiteSpace(txtStudentNumber.Text) ||
+            string.IsNullOrWhiteSpace(txtCourse.Text))
+        {
+            MessageBox.Show(
+                "Please complete all student fields before saving.",
+                "Missing Information",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            return;
+        }
+
+        MessageBox.Show(
+            "Student information has been saved successfully.",
+            "Saved",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+    }
+
+    private void ReturnToDashboard()
+    {
+        Close();
+        dashboardForm.Show();
+    }
+
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        base.OnFormClosed(e);
+
+        if (!dashboardForm.IsDisposed && !dashboardForm.Visible)
+            dashboardForm.Show();
+    }
+}

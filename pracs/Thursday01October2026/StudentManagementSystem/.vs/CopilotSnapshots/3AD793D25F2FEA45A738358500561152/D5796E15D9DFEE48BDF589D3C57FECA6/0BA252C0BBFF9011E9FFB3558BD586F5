@@ -1,0 +1,108 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace StudentManagementSystem;
+
+public class StudentSummaryForm : Form
+{
+    private readonly Form dashboardForm;
+    private readonly TextBox txtStudentName = new();
+    private readonly TextBox txtStudentNumber = new();
+    private readonly TextBox txtCourse = new();
+    private readonly NumericUpDown nudAge = new();
+    private readonly Button btnBack = new();
+
+    public StudentSummaryForm(Form dashboardForm)
+    {
+        this.dashboardForm = dashboardForm;
+
+        Text = "Student Summary";
+        StartPosition = FormStartPosition.CenterScreen;
+        Size = new Size(650, 520);
+        BackColor = Theme.Background;
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
+
+        var title = new Label
+        {
+            Text = "Student Summary",
+            Font = Theme.TitleFont,
+            ForeColor = Theme.PrimaryDark,
+            AutoSize = true,
+            Location = new Point(220, 35)
+        };
+
+        AddField("Student Name", txtStudentName, 110);
+        AddField("Student Number", txtStudentNumber, 170);
+        AddField("Course", txtCourse, 230);
+
+        var lblAge = MakeLabel("Age", 120, 295);
+        nudAge.Location = new Point(250, 290);
+        nudAge.Size = new Size(270, 30);
+        nudAge.Minimum = 1;
+        nudAge.Maximum = 120;
+        nudAge.Value = 18;
+
+        ConfigureButton(btnBack, "Back", 240, 360);
+
+        btnBack.Click += (_, _) => ReturnToDashboard();
+
+        Controls.AddRange(new Control[]
+        {
+            title, lblAge, nudAge, btnBack
+        });
+
+        // The practical states that the summary does not need to retrieve
+        // information from Student Details, so these fields remain simulation-only.
+        txtStudentName.Text = "Example Student";
+        txtStudentNumber.Text = "STU001";
+        txtCourse.Text = "Software Development";
+    }
+
+    private void AddField(string labelText, TextBox box, int y)
+    {
+        var label = MakeLabel(labelText, 120, y + 5);
+        box.Location = new Point(250, y);
+        box.Size = new Size(270, 30);
+        box.Font = Theme.NormalFont;
+        box.ReadOnly = true;
+
+        Controls.Add(label);
+        Controls.Add(box);
+    }
+
+    private static Label MakeLabel(string text, int x, int y) => new()
+    {
+        Text = text,
+        Location = new Point(x, y),
+        AutoSize = true,
+        Font = Theme.NormalFont,
+        ForeColor = Theme.Text
+    };
+
+    private static void ConfigureButton(Button button, string text, int x, int y)
+    {
+        button.Text = text;
+        button.Location = new Point(x, y);
+        button.Size = new Size(170, 45);
+        button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+        button.BackColor = Theme.Primary;
+        button.ForeColor = Color.White;
+        button.FlatStyle = FlatStyle.Flat;
+    }
+
+    private void ReturnToDashboard()
+    {
+        Close();
+        dashboardForm.Show();
+    }
+
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        base.OnFormClosed(e);
+
+        if (!dashboardForm.IsDisposed && !dashboardForm.Visible)
+            dashboardForm.Show();
+    }
+}

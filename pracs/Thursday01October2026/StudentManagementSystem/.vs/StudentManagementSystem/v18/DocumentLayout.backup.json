@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|c:\\users\\blaze\\desktop\\studentmanagementsystem_csharp\\studentmanagementsystem\\studentmanagementsystem\\studentdetailsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|solutionrelative:studentmanagementsystem\\studentdetailsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|c:\\users\\blaze\\desktop\\studentmanagementsystem_csharp\\studentmanagementsystem\\studentmanagementsystem\\dashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|solutionrelative:studentmanagementsystem\\dashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|c:\\users\\blaze\\desktop\\studentmanagementsystem_csharp\\studentmanagementsystem\\studentmanagementsystem\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|solutionrelative:studentmanagementsystem\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|c:\\users\\blaze\\desktop\\studentmanagementsystem_csharp\\studentmanagementsystem\\studentmanagementsystem\\studentsummaryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8D8A3F8-0F11-4B9E-9E39-7A3E9B2D9A01}|StudentManagementSystem\\StudentManagementSystem.csproj|solutionrelative:studentmanagementsystem\\studentsummaryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StudentSummaryForm.cs",
+              "DocumentMoniker": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\StudentSummaryForm.cs",
+              "RelativeDocumentMoniker": "StudentManagementSystem\\StudentSummaryForm.cs",
+              "ToolTip": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\StudentSummaryForm.cs",
+              "RelativeToolTip": "StudentManagementSystem\\StudentSummaryForm.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T14:19:07.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentDetailsForm.cs",
+              "DocumentMoniker": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\StudentDetailsForm.cs",
+              "RelativeDocumentMoniker": "StudentManagementSystem\\StudentDetailsForm.cs",
+              "ToolTip": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\StudentDetailsForm.cs",
+              "RelativeToolTip": "StudentManagementSystem\\StudentDetailsForm.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T14:18:58.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DashboardForm.cs",
+              "DocumentMoniker": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\DashboardForm.cs",
+              "RelativeDocumentMoniker": "StudentManagementSystem\\DashboardForm.cs",
+              "ToolTip": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\DashboardForm.cs",
+              "RelativeToolTip": "StudentManagementSystem\\DashboardForm.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T14:18:43.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\LoginForm.cs",
+              "RelativeDocumentMoniker": "StudentManagementSystem\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\blaze\\Desktop\\StudentManagementSystem_CSharp\\StudentManagementSystem\\StudentManagementSystem\\LoginForm.cs",
+              "RelativeToolTip": "StudentManagementSystem\\LoginForm.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T14:11:31.659Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

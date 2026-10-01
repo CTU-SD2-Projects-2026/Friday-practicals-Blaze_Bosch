@@ -1,0 +1,93 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace StudentManagementSystem;
+
+public class DashboardForm : Form
+{
+    private readonly Form loginForm;
+    private readonly Button btnStudentDetails = new();
+    private readonly Button btnStudentSummary = new();
+    private readonly Button btnLogout = new();
+
+    public DashboardForm(Form loginForm)
+    {
+        this.loginForm = loginForm;
+
+        Text = "Student Management System - Dashboard";
+        StartPosition = FormStartPosition.CenterScreen;
+        Size = new Size(650, 500);
+        BackColor = Theme.Background;
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
+
+        var title = new Label
+        {
+            Text = "Dashboard",
+            Font = Theme.TitleFont,
+            ForeColor = Theme.PrimaryDark,
+            AutoSize = true,
+            Location = new Point(245, 50)
+        };
+
+        var welcome = new Label
+        {
+            Text = "Welcome, Administrator!",
+            Font = Theme.HeadingFont,
+            ForeColor = Theme.Text,
+            AutoSize = true,
+            Location = new Point(215, 105)
+        };
+
+        ConfigureButton(btnStudentDetails, "Student Details", 160, 170, Theme.Primary);
+        ConfigureButton(btnStudentSummary, "Student Summary", 160, 235, Theme.Accent);
+        ConfigureButton(btnLogout, "Logout", 160, 300, Theme.Danger);
+
+        btnStudentDetails.Click += (_, _) =>
+        {
+            new StudentDetailsForm(this).Show();
+            Hide();
+        };
+
+        btnStudentSummary.Click += (_, _) =>
+        {
+            new StudentSummaryForm(this).Show();
+            Hide();
+        };
+
+        btnLogout.Click += (_, _) => Logout();
+
+        Controls.AddRange(new Control[]
+        {
+            title, welcome, btnStudentDetails, btnStudentSummary, btnLogout
+        });
+    }
+
+    private static void ConfigureButton(Button button, string text, int x, int y, Color color)
+    {
+        button.Text = text;
+        button.Location = new Point(x, y);
+        button.Size = new Size(330, 48);
+        button.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+        button.BackColor = color;
+        button.ForeColor = Color.White;
+        button.FlatStyle = FlatStyle.Flat;
+    }
+
+    private void Logout()
+    {
+        Close();
+        loginForm.Show();
+    }
+
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        base.OnFormClosed(e);
+
+        if (loginForm.IsDisposed)
+            Application.Exit();
+        else
+            loginForm.Show();
+    }
+}

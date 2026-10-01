@@ -1,0 +1,106 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace StudentManagementSystem;
+
+public class LoginForm : Form
+{
+    private readonly TextBox txtUsername = new();
+    private readonly TextBox txtPassword = new();
+    private readonly Button btnLogin = new();
+
+    public LoginForm()
+    {
+        Text = "Student Management System - Login";
+        StartPosition = FormStartPosition.CenterScreen;
+        Size = new Size(520, 420);
+        MinimumSize = new Size(500, 380);
+        BackColor = Theme.Background;
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
+
+        var title = new Label
+        {
+            Text = "Student Management System",
+            Font = Theme.TitleFont,
+            ForeColor = Theme.PrimaryDark,
+            AutoSize = true,
+            Location = new Point(80, 55)
+        };
+
+        var subtitle = new Label
+        {
+            Text = "Administrator Login",
+            Font = Theme.HeadingFont,
+            ForeColor = Theme.Text,
+            AutoSize = true,
+            Location = new Point(175, 105)
+        };
+
+        var lblUsername = MakeLabel("Username", 90, 155);
+        txtUsername.Location = new Point(90, 180);
+        txtUsername.Size = new Size(330, 30);
+        txtUsername.Font = Theme.NormalFont;
+        txtUsername.Name = "txtUsername";
+
+        var lblPassword = MakeLabel("Password", 90, 225);
+        txtPassword.Location = new Point(90, 250);
+        txtPassword.Size = new Size(330, 30);
+        txtPassword.Font = Theme.NormalFont;
+        txtPassword.UseSystemPasswordChar = true;
+        txtPassword.Name = "txtPassword";
+
+        btnLogin.Text = "Login";
+        btnLogin.Location = new Point(90, 305);
+        btnLogin.Size = new Size(330, 42);
+        btnLogin.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+        btnLogin.BackColor = Theme.Primary;
+        btnLogin.ForeColor = Color.White;
+        btnLogin.FlatStyle = FlatStyle.Flat;
+        btnLogin.Name = "btnLogin";
+        btnLogin.Click += BtnLogin_Click;
+
+        Controls.AddRange(new Control[]
+        {
+            title, subtitle, lblUsername, txtUsername, lblPassword, txtPassword, btnLogin
+        });
+
+        AcceptButton = btnLogin;
+    }
+
+    private static Label MakeLabel(string text, int x, int y) => new()
+    {
+        Text = text,
+        Location = new Point(x, y),
+        AutoSize = true,
+        Font = Theme.NormalFont,
+        ForeColor = Theme.Text
+    };
+
+    private void InitializeComponent()
+    {
+
+    }
+
+    private void BtnLogin_Click(object? sender, EventArgs e)
+    {
+        if (txtUsername.Text.Trim() == "admin" && txtPassword.Text == "1234")
+        {
+            var dashboard = new DashboardForm(this);
+            dashboard.Show();
+            Hide();
+        }
+        else
+        {
+            MessageBox.Show(
+                "Incorrect username or password. Please try again.",
+                "Login Failed",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+
+            txtPassword.Clear();
+            txtUsername.Focus();
+        }
+    }
+}
